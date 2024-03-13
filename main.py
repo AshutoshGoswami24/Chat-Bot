@@ -15,7 +15,7 @@ from os import environ
 from pyrogram.errors.exceptions import Forbidden
 
 # Create a Pyrogram client
-app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token, PICS=pics, ADMINS=admins)
 
 print("𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐠😴......")
 
@@ -93,7 +93,7 @@ async def all_command(client, message):
         reply_markup=reply_markup)
 
 print("ALL MASSAGE BUTTON OR FUNCTION Check🟢......")
-ADMINS = [6141937812]
+
 
 
 
