@@ -15,11 +15,9 @@ from os import environ
 from pyrogram.errors.exceptions import Forbidden
 
 # Create a Pyrogram client
-app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token, pics=pics, ADMINS=admins)
 
 print("𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐠😴......")
-
-PICS = environ.get('PICS', 'https://graph.org/file/7bf517f440a124dc68d80.jpg https://graph.org/file/c42f1ed5e9e9f134b9ddc.jpg https://graph.org/file/a24f0b32ead8fde3adc21.jpg https://graph.org/file/a89bd2adf24a1b1f77bab.jpg https://graph.org/file/80f5cbdf1a7c47e77b490.jpg').split()
 
 print("Start PIC Check🟢......")
 # START_TXT message
