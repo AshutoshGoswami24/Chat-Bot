@@ -1,0 +1,7 @@
+Pyrogram==2.0.106
+TgCrypto
+speedtest-cli 
+psutil
+aiohttp
+aiogram
+asyncio
