@@ -5,8 +5,8 @@ import psutil
 import speedtest
 from os import getenv, environ
 from pyrogram import Client, filters
-from vip.qur import *   # Importing qa_dict from qur.py
-from vip.adm import api_id, api_hash, bot_token 
+from qur import *   # Importing qa_dict from qur.py
+from config import api_id, api_hash, bot_token 
 from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
