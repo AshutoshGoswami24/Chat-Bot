@@ -1,5 +1,5 @@
 # Chat-Bot
-<img src="https://graph.org/file/17e4d9230bd10d58113e0.jpg">
+<img src="https://graph.org/file/764beb07352a5d805c4ba.jpg">
 
 ## Environment Variables
 - `API_ID` : Get From [my.telegram.org](https://my.telegram.org)
