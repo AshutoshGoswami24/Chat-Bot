@@ -1,7 +1,7 @@
 import openai
+from config import *
 
-
-
+openai.api_key = OPENAI_API_KEY
 # Function to generate a response using OpenAI's GPT-3 model
 async def generate_response(question):
     try:
