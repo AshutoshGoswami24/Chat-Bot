@@ -1,5 +1,12 @@
+#-chat-gpt-#
+openai
+
+#-Telegram-#
+
 Pyrogram==2.0.106
 TgCrypto
+
+#-Systum-Info-#
 speedtest-cli 
 psutil
 aiohttp
