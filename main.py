@@ -6,7 +6,7 @@ import psutil
 from os import getenv, environ
 from pyrogram import Client, filters
 from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
-from config import bot_token, api_id, api_hash, OPENAI_API_KEY, PICS  # Importing variables from config.py
+from config import *  # Importing variables from config.py
 from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
