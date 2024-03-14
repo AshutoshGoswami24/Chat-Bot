@@ -13,7 +13,7 @@ from aiohttp import web
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from os import environ
 from pyrogram.errors.exceptions import Forbidden
-import openai  # Import openai library
+
 
 # Create a Pyrogram client
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
@@ -134,31 +134,7 @@ async def start_command(client, message):
     # Send the startup message
     await message.reply_text(f"__{me.first_name}  Iꜱ Sᴛᴀʀᴛᴇᴅ.....✨️__\n{system_info}")
 print("SYSTUM INFO Check🟢......")
-#-chat-gpt-#
-openai.api_key = OPENAI_API_KEY
 
-# Define the command handler for /chatgpt or /gpt
-@Client.on_message(filters.command(['chatgpt', 'gpt']) & filters.private)
-async def chat_gpt(client, message):
-    # Get the question from the message text
-    question = ' '.join(message.command[1:])
-    
-    if question:
-        try:
-            # Generate response using ChatGPT
-            response = openai.Completion.create(
-                engine="text-davinci-002",
-                prompt=question,
-                temperature=0.7,
-                max_tokens=150
-            ).choices[0].text.strip()
-
-            # Send the response to the user
-            await message.reply(response)
-        except Exception as e:
-            await message.reply(f"An error occurred: {str(e)}")
-    else:
-        await message.reply("Please provide a question.")
         
 #welcome and exit msg
 welcome_message = "{username} 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗙𝗮𝗺𝗶𝗹𝘆  😁"
