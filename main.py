@@ -2,17 +2,18 @@ import os
 import asyncio
 import random
 import psutil
-import speedtest
+
 from os import getenv, environ
 from pyrogram import Client, filters
 from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
-from config import *
+from config import bot_token, api_id, api_hash, OPENAI_API_KEY, PICS  # Importing variables from config.py
 from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from os import environ
 from pyrogram.errors.exceptions import Forbidden
+import openai  # Import openai library
 
 # Create a Pyrogram client
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
@@ -137,7 +138,7 @@ print("SYSTUM INFO Check🟢......")
 openai.api_key = OPENAI_API_KEY
 
 # Define the command handler for /chatgpt or /gpt
-@Client.on_message(filters.command(['chatgpt', 'gpt']))
+@Client.on_message(filters.command(['chatgpt', 'gpt']) & filters.private)
 async def chat_gpt(client, message):
     # Get the question from the message text
     question = ' '.join(message.command[1:])
