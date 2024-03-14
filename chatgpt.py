@@ -1,5 +1,6 @@
-import openai
 from pyrogram import filters
+from main import app  # Import the app object from main.py
+import openai
 from config import OPENAI_API_KEY
 
 # Set your OpenAI API key
