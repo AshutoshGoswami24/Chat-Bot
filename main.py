@@ -2,7 +2,6 @@ import os
 import asyncio
 import random
 import psutil
-from chatgpt import * 
 
 from os import getenv, environ
 from pyrogram import Client, filters
