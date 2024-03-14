@@ -3,6 +3,8 @@ from main import app  # Import the app object from main.py
 import openai
 from config import OPENAI_API_KEY
 
+openai.api_key = OPENAI_API_KEY
+
 # Set your OpenAI API key
 openai.api_key = OPENAI_API_KEY
 
