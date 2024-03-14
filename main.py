@@ -19,15 +19,11 @@ app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 print("𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐠😴......")
 
-print("Start PIC Check🟢......")
-# START_TXT message
-START_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, ɪ ᴀᴍ {},ɪ ᴀᴍ ᴀ ᴄʜᴀᴛʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀɴᴅᴀᴡᴇʙ. ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ, ᴛʜᴇɴ ᴄʜᴀᴛ ᴡɪᴛʜ ᴍᴇ ᴀs ᴀ ғʀɪᴇɴᴅ. 😊 [𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙖𝙡](https://t.me/Pandawep)</b>"""
-print("Start MSG Check🟢......")
 
+#start&all cmd 
+START_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, ɪ ᴀᴍ {},ɪ ᴀᴍ ᴀ ᴄʜᴀᴛʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀɴᴅᴀᴡᴇʙ. ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ, ᴛʜᴇɴ ᴄʜᴀᴛ ᴡɪᴛʜ ᴍᴇ ᴀs ᴀ ғʀɪᴇɴᴅ. 😊 [𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙖𝙡](https://t.me/Pandawep)</b>"""
 ALL_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, 𝐓𝐡𝐢𝐬 𝐢𝐬 𝐦𝐲 𝐚𝐥𝐥 𝐜𝐡𝐚𝐧𝐧𝐞𝐥 𝐚𝐧𝐝 𝐛𝐨𝐭𝐬. 🤖</b>"""
 
-print("All MSG Check🟢......")
-# Start command handler
 @app.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
     buttons = [[
@@ -81,8 +77,6 @@ async def all_command(client, message):
         ] 
         ]
     
-
-        
     reply_markup = InlineKeyboardMarkup(buttons)
     me2 = (await client.get_me()).mention
     await message.reply_photo(
@@ -92,7 +86,7 @@ async def all_command(client, message):
 
 print("ALL MASSAGE BUTTON OR FUNCTION Check🟢......")
 
-
+#systum-info
 
 
 # Define a function to send a message to all admins
@@ -138,15 +132,14 @@ async def start_command(client, message):
 
     # Send the startup message
     await message.reply_text(f"__{me.first_name}  Iꜱ Sᴛᴀʀᴛᴇᴅ.....✨️__\n{system_info}")
-
-# Add other message handlers here...
 print("SYSTUM INFO Check🟢......")
 
+
+#welcome and exit msg
 welcome_message = "{username} 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗙𝗮𝗺𝗶𝗹𝘆  😁"
 goodbye_message = "𝗚𝗼𝗼𝗱 𝗕𝘆𝗲 {username} 🥺 𝘄𝗲 𝘄𝗶𝗹𝗹 𝗺𝗶𝘀𝘀 𝘆𝗼𝘂"
 
-
-#main Cod
+#Dont-cng-in-this
 
 print("WELCOME AND GOOD BYE MSG Check🟢......")
 # Function to handle messages in groups or channels
