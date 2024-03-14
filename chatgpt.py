@@ -22,7 +22,8 @@ async def generate_response(question):
         return f"An error occurred: {str(e)}"
 
 # Message handler for the /ask command in Telegram groups
-async def handle_ask_command(client, message):
+@app.on_message(filters.command(["ask"]) & filters.group)
+async def ask_command_group_handler(client, message):
     try:
         # Extract the question from the command
         command_parts = message.text.split(maxsplit=1)
@@ -35,11 +36,3 @@ async def handle_ask_command(client, message):
         await message.reply(answer)
     except Exception as e:
         await message.reply(f"An error occurred: {str(e)}")
-
-# Add the message handler to the filters
-filters.ask_command = filters.create(lambda _, __, update: update.text.startswith('/ask'))
-
-# Apply the message handler to the /ask command in groups
-@app.on_message(filters.ask_command & filters.group)
-async def ask_command_group_handler(client, message):
-    await handle_ask_command(client, message)
