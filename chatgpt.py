@@ -1,4 +1,5 @@
 import openai
+from pyrogram import filters
 from config import OPENAI_API_KEY
 
 # Set your OpenAI API key
@@ -19,20 +20,25 @@ async def generate_response(question):
     except Exception as e:
         return f"An error occurred: {str(e)}"
 
-@app.on_message(filters.command(["ask"]))
-async def ask_question(client, message):
+# Message handler for the /ask command in Telegram groups
+async def handle_ask_command(client, message):
     try:
-        # Prompt the user for a question
-        await message.reply("Please enter your question.")
-
-        # Wait for the user's response
-        response = await app.listen(filters.text)
+        # Extract the question from the command
+        command_parts = message.text.split(maxsplit=1)
+        question = command_parts[1] if len(command_parts) > 1 else ""
 
         # Generate a response using GPT-3
-        question = response.text.strip()
         answer = await generate_response(question)
 
-        # Send the response to the user
+        # Reply with the answer
         await message.reply(answer)
     except Exception as e:
         await message.reply(f"An error occurred: {str(e)}")
+
+# Add the message handler to the filters
+filters.ask_command = filters.create(lambda _, __, update: update.text.startswith('/ask'))
+
+# Apply the message handler to the /ask command in groups
+@app.on_message(filters.ask_command & filters.group)
+async def ask_command_group_handler(client, message):
+    await handle_ask_command(client, message)
