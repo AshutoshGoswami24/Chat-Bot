@@ -142,7 +142,7 @@ openai.api_key = OPENAI_API_KEY
 async def chat_gpt(client, message):
     # Get the question from the message text
     question = ' '.join(message.command[1:])
-
+    
     if question:
         try:
             # Generate response using ChatGPT
