@@ -4,6 +4,9 @@ from main import *
 from config import *
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import Client, filters
+
+app = Client("my_bot", api_id=api_id, api_hash=api_hash)
 
 
 
