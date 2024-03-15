@@ -6,7 +6,7 @@ async def send_message_to_admins(message):
         await app.send_message(admin_id, message)
         
 # Define a handler for the /start command
-@app.on_message(filters.private & filters.command(["st"]))
+@app.on_message(filters.private & filters.command(["ban"]))
 async def start_command(client, message):
     me = await app.get_me()
     await message.reply("Welcome to the bot!")
