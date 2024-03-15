@@ -2,7 +2,6 @@ import os
 import asyncio
 import random
 import psutil
-from datetime import datetime, timedelta
 from aiogram import types
 from os import getenv, environ
 from pyrogram import Client, filters
