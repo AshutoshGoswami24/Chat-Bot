@@ -1,8 +1,5 @@
 import random
 
-from main import *
-from config import *
-
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, filters
 
