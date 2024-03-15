@@ -2,30 +2,28 @@ from config import *
 from main import *
 from pyrogram import Client, filters
 
-async def send_message_to_admins(message):
-    for admin_id in admins:
-        await app.send_message(admin_id, message)
-        
-# Define a handler for the /start command
-@app.on_message(filters.private & filters.command(["ban"]))
-async def start_command(client, message):
-    me = await app.get_me()
-    await message.reply("Welcome to the bot!")
+from pyrogram import Client, filters
+from datetime import datetime, timedelta
 
-    # Check if the user is an admin
-    if message.from_user.id in admins:
-        # Get the user ID from the command
-        if len(message.command) > 1:
-            user_id = int(message.command[1])
-
-            # Block the user
-            await app.block_user(user_id)
-            await message.reply(f"User {user_id} has been blocked.")
-
-            # Notify admins about the action
-            await send_message_to_admins(f"Admin {message.from_user.id} has blocked user {user_id}.")
-        else:
-            await message.reply("Please specify the user's ID to block.")
+# Define your function to ban a user based on a reply
+async def ban_user(client, message):
+    try:
+        # Check if the message text contains the /ban command
+        if "/ban" in message.text:
+            # Ensure the user has replied to a message
+            if not message.reply_to_message:
+                await message.reply_text("Please reply to a message to ban the user.")
+                return
+            
+            # Extract the user ID from the replied message
+            user_id_to_ban = message.reply_to_message.from_user.id
+            chat_id = message.chat.id
+            
+            # Ban the user
+            await client.kick_chat_member(chat_id, user_id_to_ban)
+            await message.reply_text("User banned successfully!")
+    except Exception as e:
+        await message.reply_text(f"An error occurred: {str(e)}")
     else:
         await message.reply("You are not authorized to use this command.")
 
