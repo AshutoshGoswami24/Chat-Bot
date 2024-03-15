@@ -9,6 +9,7 @@ from pyrogram import Client, filters
 from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
 from config import *  # Importing variables from config.py
 from OaS import *
+from CmD import *
 from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
