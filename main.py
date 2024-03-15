@@ -1,20 +1,14 @@
 import os
-import asyncio
 import random
-import psutil
-from aiogram import types
 from os import getenv, environ
 from pyrogram import Client, filters
 from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
 from config import *  # Importing variables from config.py
 from OaS import *
 from CmD import *
-from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from os import environ
-from pyrogram.errors.exceptions import Forbidden
 
 
 # Create a Pyrogram client
