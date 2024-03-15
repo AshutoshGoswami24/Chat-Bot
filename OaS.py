@@ -1,5 +1,4 @@
 from config import *
-from main import *
 from pyrogram import Client, filters
 from datetime import datetime, timedelta
 
