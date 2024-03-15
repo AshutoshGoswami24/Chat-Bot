@@ -15,7 +15,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from os import environ
 from pyrogram.errors.exceptions import Forbidden
 
-
+ADMINS = [6141937812] 
 # Create a Pyrogram client
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
