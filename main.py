@@ -89,10 +89,24 @@ async def all_command(client, message):
 print("ALL MASSAGE BUTTON OR FUNCTION Check🟢......")
 #ban or unban
 
+async def is_admin(bot, chat_id, user_id):
+    try:
+        chat_member = await bot.get_chat_member(chat_id, user_id)
+        return chat_member.is_chat_admin()
+    except Exception as e:
+        print(f"Error checking admin status: {e}")
+        return False
+
 @Client.on_message(filters.command(['ban', 'bn']) & filters.user(ADMINS))
 async def ban_and_kick_user(bot, message):
     if len(message.command) < 2:
         return await message.reply('Usage: /ban [username]')
+    
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    
+    if not await is_admin(bot, chat_id, user_id):
+        return await message.reply("You are not authorized to use this command.")
     
     username = message.command[1]
     
@@ -114,6 +128,12 @@ async def unban_user(bot, message):
     if len(message.command) < 2:
         return await message.reply('Usage: /unban [username]')
     
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    
+    if not await is_admin(bot, chat_id, user_id):
+        return await message.reply("You are not authorized to use this command.")
+    
     username = message.command[1]
     
     try:
@@ -126,28 +146,6 @@ async def unban_user(bot, message):
     try:
         await bot.unban_chat_member(message.chat.id, user.id)
         await message.reply(f"{user.username} has been unbanned.")
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
-
-@Client.on_message(filters.command(['tempban', 'tbn']) & filters.user(ADMINS))
-async def tempban_and_kick_user(bot, message):
-    if len(message.command) < 3:
-        return await message.reply('Usage: /tempban [username] [duration]')
-    
-    username = message.command[1]
-    duration = int(message.command[2])  # Assuming duration in hours
-    
-    try:
-        # Get user info
-        user = await bot.get_users(username)
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
-    
-    # Ban and kick the user temporarily
-    try:
-        until_date = datetime.now() + timedelta(hours=duration)
-        await bot.kick_chat_member(message.chat.id, user.id, until_date=until_date)
-        await message.reply(f"{user.username} has been temporarily banned and kicked from the group for {duration} hours.")
     except Exception as e:
         return await message.reply(f'Error: {e}')
 
