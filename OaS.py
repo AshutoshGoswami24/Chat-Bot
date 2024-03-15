@@ -1,4 +1,5 @@
 from config import *
+from main import *
 from pyrogram import Client, filters
 
 async def send_message_to_admins(message):
