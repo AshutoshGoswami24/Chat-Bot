@@ -123,5 +123,4 @@ async def handle_left_chat_member(client, message):
 
 print("𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝😁......")
 
-# Start the bot
-    app.run()
+app.run()
