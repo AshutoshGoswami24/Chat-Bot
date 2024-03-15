@@ -97,6 +97,7 @@ async def is_admin(bot, chat_id, user_id):
         print(f"Error checking admin status: {e}")
         return False
 
+# Ban command handler
 @Client.on_message(filters.command(['ban', 'bn']) & filters.user(ADMINS))
 async def ban_and_kick_user(bot, message):
     if len(message.command) < 2:
@@ -123,6 +124,7 @@ async def ban_and_kick_user(bot, message):
     except Exception as e:
         return await message.reply(f'Error: {e}')
 
+# Unban command handler
 @Client.on_message(filters.command(['unban', 'ubn']) & filters.user(ADMINS))
 async def unban_user(bot, message):
     if len(message.command) < 2:
@@ -148,7 +150,7 @@ async def unban_user(bot, message):
         await message.reply(f"User with ID {user_id_to_unban} has been unbanned.")
     except Exception as e:
         return await message.reply(f'Error: {e}')
-
+        
 #systum-info
 
 
