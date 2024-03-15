@@ -68,13 +68,4 @@ async def all_command(client, message):
         caption=ALL_TXT.format(message.from_user.mention, me2),
         reply_markup=reply_markup)
 
-print("ALL MASSAGE BUTTON OR FUNCTION Check🟢......")
-#ban or unban
 
-async def is_admin(bot, chat_id, user_id):
-    try:
-        chat_member = await bot.get_chat_member(chat_id, user_id)
-        return chat_member.is_chat_admin()
-    except Exception as e:
-        print(f"Error checking admin status: {e}")
-        return False
