@@ -1,8 +1,6 @@
 from config import *
 from main import *
 from pyrogram import Client, filters
-
-from pyrogram import Client, filters
 from datetime import datetime, timedelta
 
 # Define your function to ban a user based on a reply
@@ -24,8 +22,8 @@ async def ban_user(client, message):
             await message.reply_text("User banned successfully!")
     except Exception as e:
         await message.reply_text(f"An error occurred: {str(e)}")
-    else:
-        await message.reply("You are not authorized to use this command.")
 
-# Start the Pyrogram client
-app.run()
+# Register the function as a handler for incoming messages
+@app.on_message(filters.command("ban") & filters.group)
+async def ban_command_handler(client, message):
+    await ban_user(client, message)
