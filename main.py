@@ -13,7 +13,7 @@ from CmD import *
 from pyrogram.errors import PeerIdInvalid
 from aiogram import types
 from aiohttp import web
-
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from os import environ
 from pyrogram.errors.exceptions import Forbidden
 
