@@ -2,7 +2,8 @@ import os
 import asyncio
 import random
 import psutil
-
+from datetime import datetime, timedelta
+from aiogram import types
 from os import getenv, environ
 from pyrogram import Client, filters
 from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
@@ -86,6 +87,69 @@ async def all_command(client, message):
         reply_markup=reply_markup)
 
 print("ALL MASSAGE BUTTON OR FUNCTION Check🟢......")
+#ban or unban
+
+@Client.on_message(filters.command(['ban', 'bn']) & filters.user(ADMINS))
+async def ban_and_kick_user(bot, message):
+    if len(message.command) < 2:
+        return await message.reply('Usage: /ban [username]')
+    
+    username = message.command[1]
+    
+    try:
+        # Get user info
+        user = await bot.get_users(username)
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
+    
+    # Ban and kick the user
+    try:
+        await bot.kick_chat_member(message.chat.id, user.id)
+        await message.reply(f"{user.username} has been banned and kicked from the group.")
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
+
+@Client.on_message(filters.command(['unban', 'ubn']) & filters.user(ADMINS))
+async def unban_user(bot, message):
+    if len(message.command) < 2:
+        return await message.reply('Usage: /unban [username]')
+    
+    username = message.command[1]
+    
+    try:
+        # Get user info
+        user = await bot.get_users(username)
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
+    
+    # Unban the user
+    try:
+        await bot.unban_chat_member(message.chat.id, user.id)
+        await message.reply(f"{user.username} has been unbanned.")
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
+
+@Client.on_message(filters.command(['tempban', 'tbn']) & filters.user(ADMINS))
+async def tempban_and_kick_user(bot, message):
+    if len(message.command) < 3:
+        return await message.reply('Usage: /tempban [username] [duration]')
+    
+    username = message.command[1]
+    duration = int(message.command[2])  # Assuming duration in hours
+    
+    try:
+        # Get user info
+        user = await bot.get_users(username)
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
+    
+    # Ban and kick the user temporarily
+    try:
+        until_date = datetime.now() + timedelta(hours=duration)
+        await bot.kick_chat_member(message.chat.id, user.id, until_date=until_date)
+        await message.reply(f"{user.username} has been temporarily banned and kicked from the group for {duration} hours.")
+    except Exception as e:
+        return await message.reply(f'Error: {e}')
 
 #systum-info
 
