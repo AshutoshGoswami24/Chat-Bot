@@ -98,59 +98,6 @@ async def is_admin(bot, chat_id, user_id):
         print(f"Error checking admin status: {e}")
         return False
 
-# Ban command handler
-@Client.on_message(filters.command(['ban', 'bn']) & filters.user(ADMINS))
-async def ban_and_kick_user(bot, message):
-    if len(message.command) < 2:
-        return await message.reply('Usage: /ban [user_id]')
-    
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    
-    if not await is_admin(bot, chat_id, user_id):
-        return await message.reply("You are not authorized to use this command.")
-    
-    user_id_to_ban = message.command[1]
-    
-    try:
-        # Get user info
-        user = await bot.get_users(user_id_to_ban)
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
-    
-    # Ban and kick the user
-    try:
-        await bot.kick_chat_member(chat_id, user_id_to_ban)
-        await message.reply(f"User with ID {user_id_to_ban} has been banned and kicked from the group.")
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
-
-# Unban command handler
-@Client.on_message(filters.command(['unban', 'ubn']) & filters.user(ADMINS))
-async def unban_user(bot, message):
-    if len(message.command) < 2:
-        return await message.reply('Usage: /unban [user_id]')
-    
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    
-    if not await is_admin(bot, chat_id, user_id):
-        return await message.reply("You are not authorized to use this command.")
-    
-    user_id_to_unban = message.command[1]
-    
-    try:
-        # Get user info
-        user = await bot.get_users(user_id_to_unban)
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
-    
-    # Unban the user
-    try:
-        await bot.unban_chat_member(chat_id, user_id_to_unban)
-        await message.reply(f"User with ID {user_id_to_unban} has been unbanned.")
-    except Exception as e:
-        return await message.reply(f'Error: {e}')
         
 #systum-info
 
