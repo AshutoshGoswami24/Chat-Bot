@@ -1,94 +1,132 @@
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-import requests
 import os
 import random
-from config import *
+from os import getenv, environ
+from pyrogram import Client, filters
+from Ashutosh_Goswami import *   # Importing qa_dict from qur.py
+from config import *  # Importing variables from config.py
+from OaS import *
+from CmD import *
+from aiogram import types
+from aiohttp import web
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Load API credentials and bot token from the config file
-from config import api_id, api_hash, bot_token
 
-# Initialize the Pyrogram client
+# Create a Pyrogram client
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-# Define the download function
-def download_file(url, file_name):
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.content
-    else:
-        return None
+print("𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐠😴......")
 
-# Define a dictionary to store user file name inputs
-user_filename_input = {}
+welcome_message = "{username} 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗙𝗮𝗺𝗶𝗹𝘆  😁"
+goodbye_message = "𝗚𝗼𝗼𝗱 𝗕𝘆𝗲 {username} 🥺 𝘄𝗲 𝘄𝗶𝗹𝗹 𝗺𝗶𝘀𝘀 𝘆𝗼𝘂"
 
-# Define the start command handler
-START_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, ɪ ᴀᴍ {}, ɪ ᴀᴍ ᴀ ᴄʜᴀᴛʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀɴᴅᴀᴡᴇʙ. ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ, ᴛʜᴇɴ ᴄʜᴀᴛ ᴡɪᴛʜ ᴍᴇ ᴀs ᴀ ғʀɪᴇɴᴅ. 😊 [𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙖𝙡](https://t.me/Pandawep)</b>"""
+START_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, ɪ ᴀᴍ {},ɪ ᴀᴍ ᴀ ᴄʜᴀᴛʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀɴᴅᴀᴡᴇʙ. ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴀɴʏ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ, ᴛʜᴇɴ ᴄʜᴀᴛ ᴡɪᴛʜ ᴍᴇ ᴀs ᴀ ғʀɪᴇɴᴅ. 😊 [𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙖𝙡](https://t.me/Pandawep)</b>"""
+ALL_TXT = """<b>𝐇𝐞𝐥𝐥𝐨 {}, 𝐓𝐡𝐢𝐬 𝐢𝐬 𝐦𝐲 𝐚𝐥𝐥 𝐜𝐡𝐚𝐧𝐧𝐞𝐥 𝐚𝐧𝐝 𝐛𝐨𝐭𝐬. 🤖</b>"""
 
 @app.on_message(filters.command("start") & filters.incoming)
-async def start_command(client, message):
-    buttons = [
-        [
-            InlineKeyboardButton('😎 Main Channel 😎', url='https://t.me/pandawep')
-        ],
-        [
-            InlineKeyboardButton('❤️ Chat Family ❤️', url='https://t.me/PandaWepChat')
-        ]
-    ]
+async def start(client, message):
+    buttons = [[
+        InlineKeyboardButton('😎Main Channal 😎', url='https://t.me/pandawep')
+    ],[
+        InlineKeyboardButton('❤️ Chat Family ❤️', url='https://t.me/PandaWepChat')
+        ]]
     reply_markup = InlineKeyboardMarkup(buttons)
-    me_mention = (await client.get_me()).mention
+    me2 = (await client.get_me()).mention
     await message.reply_photo(
-        photo=random.choice(PICS),  # Assuming PICS is defined somewhere in your code
-        caption=START_TXT.format(message.from_user.mention, me_mention),
-        reply_markup=reply_markup,
-        parse_mode="html"
+        photo=random.choice(PICS),
+        caption=START_TXT.format(message.from_user.mention, me2),
+        reply_markup=reply_markup
     )
 
-# Define the download command handler
-@app.on_message(filters.command("download") & filters.incoming)
-async def download_command(client, message):
-    try:
-        # Get the URL from the command message
-        url = message.text.split(maxsplit=1)[1]
+print("START MASSAGE BUTTON OR FUNCTION Check🟢......")
+# Handler for /all command
+@app.on_message(filters.command("all") & filters.incoming)
+async def all_command(client, message):
+    buttons = [
+        [
+            InlineKeyboardButton('😎Main Channal 😎', url='https://t.me/pandawep')
+        ],
+        [
+            InlineKeyboardButton('⭐️ File To Url Bot ⭐️', url='https://t.me/FileToUrlX_Bot'),
+            InlineKeyboardButton('🏧 Auto Rename Bot 🏧', url='https://t.me/AutoRenamePro_bot')
+        ],
+        [
+            InlineKeyboardButton('🔽 All Save Bot 🔽', url='https://t.me/AllSaveBot_bot'),
+            InlineKeyboardButton('📝 File Rename Bot 📝', url='https://t.me/FileRenameXBot_bot')
+        ],
+        [
+            InlineKeyboardButton('🍿 Movie Channel 🍿', url='https://t.me/MoviePandaWep'),
+            InlineKeyboardButton('🎬 Movie Group 🎬', url='https://t.me/PandaMovieREQ')
+        ],
+        [
+            InlineKeyboardButton('🉐 Hindi Anime 🉐', url='https://t.me/AnimePandaWep'),
+            InlineKeyboardButton('👶 Cartoon 👶', url='https://t.me/CTPandaWep')
+        ],
+        [
+            InlineKeyboardButton('🎞️ Webseries 🎞️', url='https://t.me/WebSerisePandaWep'),
+            InlineKeyboardButton('📚 Books And Free Course 📚', url='https://t.me/BooksPandaWep')
+        ],
+        [
+            InlineKeyboardButton('📱 Mod Apps 📱', url='https://t.me/ApkAshuModKing24'),
+            InlineKeyboardButton('🦸‍♂️ Marvel & DC All 🦸‍♀️', url='https://t.me/MarvelXDcAll')
+        ],
+        [
+            InlineKeyboardButton('❤️ Chat Family ❤️', url='https://t.me/PandaWepChat'),
+            InlineKeyboardButton('🎬 PandaFilter Bot 🎬', url='https://t.me/PandaFilter_bot')
+        ] 
+        ]
 
-        # Store the URL for later use
-        user_filename_input[message.chat.id] = url
+    reply_markup = InlineKeyboardMarkup(buttons)
+    me2 = (await client.get_me()).mention
+    await message.reply_photo(
+        photo=random.choice(PICS),
+        caption=ALL_TXT.format(message.from_user.mention, me2),
+        reply_markup=reply_markup)
 
-        # Ask the user to set the filename through a button
-        await message.reply_text("Please click the button below to set the filename for the downloaded file.",
-                                  reply_markup=InlineKeyboardMarkup([
-                                      [InlineKeyboardButton("Set Filename", callback_data="set_filename")]
-                                  ]))
-    except IndexError:
-        await message.reply_text("Please provide a URL after the /download command.")
 
-# Define callback handler to set filename
-@app.on_callback_query(filters.regex("set_filename"))
-async def set_filename_callback(_, callback: CallbackQuery):
-    await callback.answer()
-    await callback.message.reply_text("Please enter the desired filename for the downloaded file.")
 
-# Define message handler to receive filename input
-@app.on_message(filters.private & ~filters.command & filters.reply & filters.user(app.session.api_id))
-async def set_filename_message(client, message):
-    if message.chat.id not in user_filename_input:
-        return
-    file_name = message.text.strip()
-    url = user_filename_input.pop(message.chat.id)
-    file_bytes = download_file(url, file_name)
-    if file_bytes:
-        # Save the file
-        file_path = f"./downloads/{file_name}"
-        with open(file_path, "wb") as file:
-            file.write(file_bytes)
+print("WELCOME AND GOOD BYE MSG Check🟢......")
+# Function to handle messages in groups or channels
+@app.on_message(filters.group & (filters.text | filters.command))
+async def handle_message(client, message):
+    text = message.text.lower()
 
-        # Upload the file
-        await message.reply_document(document=file_path)
+    # Send the response from qa_dict as a new message
+    if text in qa_dict:
+        response = qa_dict[text]
+        # Replace {username} with the actual username if available
+        if "{username}" in response:
+            if message.from_user.username:
+                username = "@" + message.from_user.username
+                response = response.replace("{username}", username)
+            else:
+                response = response.replace("{username}", "this user")
+        await message.reply(response)
 
-        # Delete the downloaded file
-        os.remove(file_path)
+print("QRD TXT AND FUNCTION Check ALL OF AND NEX......") 
+
+@app.on_message(filters.group & filters.new_chat_members)
+async def handle_new_chat_members(client, message):
+    for new_member in message.new_chat_members:
+        username = new_member.username
+        if username:
+            response = welcome_message.format(username="@" + username)
+            await message.reply_text(response)
+        else:
+            response = welcome_message.format(username="this new member")
+            await message.reply_text(response)
+
+print("NEW MEMBERT QRD Check🟢......")
+
+@app.on_message(filters.group & filters.left_chat_member)
+async def handle_left_chat_member(client, message):
+    user_info = message.left_chat_member
+    if user_info.username:
+        response = goodbye_message.format(username="@" + user_info.username)
+        await message.reply_text(response)
     else:
-        await message.reply_text("Failed to download the file.")
+        response = goodbye_message.format(username="this user")
+        await message.reply_text(response)
 
-# Start the bot
+print("𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝😁......")
+
 app.run()
