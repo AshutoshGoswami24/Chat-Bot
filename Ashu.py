@@ -17,7 +17,7 @@ bot = Client(
            plugins=dict(root='plugins'))
            
 
-if I-Am-Ashu:
+if ASHU:
     apps = [Client2,bot]
     for app in apps:
         app.start()
