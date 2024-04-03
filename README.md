@@ -15,7 +15,7 @@
 * `PICS` - Start message photo. `Optional`
 * `START_TXT` - Start Txt
 * `ALL_TXT` - Your Channal Info
-  
+* `I-Am-Ashu` - `True` Don't Try To Change Its Required
 
 
 
