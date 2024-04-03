@@ -1,0 +1,44 @@
+{
+    "name": "Chat-Bot",
+    "description": "Telegram Chat Bot",
+    "logo": "https://graph.org/file/7c4cb180b4529bef350c0.jpg",
+    "keywords": ["Chat Bot", "Ashutosh Goswami 24"],    
+    "repository": "https://github.com/AshutoshGoswami24/Chat-Bot",
+    "env": {
+        "API_ID": {
+            "description": "Your APP ID From my.telegram.org ",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Your API Hash From my.telegram.org ",
+            "value": "",
+            "required": true
+        },
+        "I-Am-Ashu": {
+            "description": "if your server is need web service! value = True else value = False",
+            "value": "True",
+            "required": True
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token From @BotFather",
+            "value": "",
+            "required": true
+        },
+        "ADMIN": {
+            "description":"Add Your User ID multiple is use space to split",
+            "value": "",
+            "required": true
+        },
+        "PICS": {
+            "description": "Your Bot start cmd Pic from @PandaFilter_bot",
+            "value": "https://graph.org/file/7c4cb180b4529bef350c0.jpg",
+            "required": false
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
