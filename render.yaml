@@ -19,5 +19,5 @@ services:
         sync: false
       - key: ADMIN
         sync: false
-      - key: I-Am-Ashu
+      - key: ASHU
         sync: false
