@@ -17,7 +17,7 @@ services:
         sync: false
       - key: PICS
         sync: false
-      - key: ADMIN
+      - key: ADMINS
         sync: false
       - key: ASHU
         sync: false
