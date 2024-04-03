@@ -1,9 +1,8 @@
 Pyrogram==2.0.106
-TgCrypto
-speedtest-cli 
-psutil
-aiohttp
-aiogram
-asyncio
-speedtest-cli
-requests
+TgCrypto==1.2.5
+speedtest-cli==2.1.3
+psutil==5.9.8
+aiohttp==3.9.3
+aiogram==3.4.1
+asyncio==3.4.3
+requests==2.31.0
