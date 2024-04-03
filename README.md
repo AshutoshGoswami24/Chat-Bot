@@ -33,10 +33,11 @@
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
   </p>
 </details>
-<a href="https://render.com/deploy?repo=https://github.com/AshutoshGoswami24/Chat-Bot">
-  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy">
-</p>
-</details>
+  
+<a target="/blank" href="https://app.koyeb.com/deploy?type=git&repository=github.com/AshutoshGoswami24/Chat-Bot&branch=main&name=chat-bot-ashu" >	<a target="/blank" href="https://app.koyeb.com/deploy?type=git&repository=github.com/AshutoshGoswami24/Chat-Bot&branch=main&name=chat-bot-ashu" >
+  <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy">	  <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy">
+</a>	</a>
+
 
 
 
