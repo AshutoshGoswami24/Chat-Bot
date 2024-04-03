@@ -15,7 +15,7 @@
             "value": "",
             "required": true
         },
-        "I-Am-Ashu": {
+        "ASHU": {
             "description": "If your server needs a web service! Value = True, else value = False",
             "value": "True",
             "required": true
@@ -36,6 +36,7 @@
             "required": false
         }
     },
+    
     "buildpacks": [
         {
             "url": "heroku/python"
