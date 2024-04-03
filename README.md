@@ -25,8 +25,7 @@
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)]([https://render.com/deploy?repo=https://github.com/AshutoshGoswami24/Chat-Bot])
 <details><summary>Deploy To Koyeb</summary>
-<p>
-<br>                 
+             
 <a target="/blank" href="https://app.koyeb.com/deploy?type=git&repository=github.com/AshutoshGoswami24/Chat-Bot&branch=main&name=chat-bot-ashu" >
   <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy">
 </a>
