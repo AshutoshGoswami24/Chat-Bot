@@ -1,14 +1,9 @@
-
-
-#-Telegram-#
-
 Pyrogram==2.0.106
 TgCrypto
-
-#-Systum-Info-#
 speedtest-cli 
 psutil
 aiohttp
 aiogram
 asyncio
 speedtest-cli
+requests
