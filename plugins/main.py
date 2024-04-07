@@ -13,7 +13,6 @@ from aiohttp import web
 from os import environ
 # Create a Pyrogram client
 
-BOT_TOKEN = bot_token
 
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
